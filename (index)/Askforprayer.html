@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Points</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            margin: 20px;
+            text-align: center;
+        }
+
+        #prayerForm {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        #prayerPoints {
+            width: 100%;
+            height: 100px;
+            resize: none;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #submitButton {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        #submittedPrayers {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        #prayerList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #prayerList li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #555;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="prayerForm">
+        <img id="logo" src="your-logo.png" alt="Your Logo">
+        <h1>Prayer Points</h1>
+        <p>Type your prayer points below:</p>
+        <textarea id="prayerPoints" placeholder="Enter your prayer points here..."></textarea>
+        <br>
+        <button id="submitButton" onclick="submitPrayerPoints()">Submit</button>
+
+        <div id="submittedPrayers">
+            <h2>Submitted Prayer Points</h2>
+            <ul id="prayerList"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Load previously submitted prayer points from local storage
+        window.onload = function () {
+            loadPrayerPoints();
+        };
+
+        function submitPrayerPoints() {
+            var prayerPointsInput = document.getElementById('prayerPoints');
+            var prayerPoints = prayerPointsInput.value.trim();
+
+            if (prayerPoints !== '') {
+                // Save prayer points to local storage
+                savePrayerPoints(prayerPoints);
+
+                // Clear input field
+                prayerPointsInput.value = '';
+
+                // Update the displayed prayer points
+                loadPrayerPoints();
+            } else {
+                alert('Please enter your prayer points before submitting.');
+            }
+        }
+
+        function savePrayerPoints(prayerPoints) {
+            var existingPrayerPoints = localStorage.getItem('prayerPoints');
+
+            if (existingPrayerPoints) {
+                existingPrayerPoints = JSON.parse(existingPrayerPoints);
+                existingPrayerPoints.push(prayerPoints);
+                localStorage.setItem('prayerPoints', JSON.stringify(existingPrayerPoints));
+            } else {
+                localStorage.setItem('prayerPoints', JSON.stringify([prayerPoints]));
+            }
+        }
+
+        function loadPrayerPoints() {
+            var prayerList = document.getElementById('prayerList');
+            prayerList.innerHTML = '';
+
+            var storedPrayerPoints = localStorage.getItem('prayerPoints');
+
+            if (storedPrayerPoints) {
+                storedPrayerPoints = JSON.parse(storedPrayerPoints);
+
+                storedPrayerPoints.forEach(function (prayer) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = prayer;
+                    prayerList.appendChild(listItem);
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

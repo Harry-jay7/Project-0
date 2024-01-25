@@ -1,0 +1,173 @@
+body{
+    margin:0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url("https://royalgracechapel.com/images/test.png");
+    background-repeat:repeat-x;
+    background-attachment: fixed;
+    
+}
+.required{
+    color:red;
+}
+.survey-container{
+    width:100%;
+}
+.question{
+    background-color: #fff;
+    width: 50%;
+    padding:15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    margin:20px auto;
+    font-size: 16px;
+    border: solid 0.5px silver;
+}
+.title-border-top{
+    border-top:solid 10px goldenrod ;
+    font-size: 16px;
+}
+#title{
+    font-weight:bold;
+    font-size:30px;
+    text-transform: uppercase;
+     letter-spacing: 3;
+}
+.title-border-top h3{
+   text-transform: uppercase;
+    font-size: 23px;
+    letter-spacing: 3;
+    padding: 0;
+}
+input[type="text"] {
+    width: 50%;
+    border:none;
+    padding:10px;
+    border-bottom: solid 0.5px silver;
+}
+
+input[type="radio"] {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+#accent {
+    accent-color:goldenrod;
+}
+
+.custom-radio {
+    /* hiding browser el */
+    appearance: none;
+    /* Safari support */
+    -webkit-appearance: none;
+    border: 0.2rem solid #fff;
+    background-color: goldenrod;
+    border-radius: 50%;
+}
+
+/* keyboard navigation focus appearance */
+.custom-radio:focus-visible {
+    outline-offset: 0;
+}
+
+#box-shadow {
+    box-shadow: 0 0 0 1px goldenrod;
+}
+
+#box-shadow:hover {
+    border-width: 0;
+}
+
+#box-shadow:checked {
+    box-shadow: 0 0 0 1px goldenrod;
+    background-color: goldenrod;
+    border-width: 0.2rem;
+}
+
+#outline {
+    outline: 1px solid var(--color);
+}
+
+#outline:hover {
+    outline-color: var(--checked-color);
+}
+
+#outline:checked {
+    outline-color: var(--checked-color);
+    background-color: var(--checked-color);
+
+    animation: outline-checked;
+    animation-duration: 0.1s;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+.btn-submit{
+    background-color:orange;
+    color:#fff;
+    padding:10px 25px;
+    border-radius:5px;
+    border-color:orange;
+
+}
+
+.mymodal{
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+#modal-content{
+    position:relative;
+    margin:15% auto;
+    background-color:#fff;
+    width:50%;
+    border: solid 1px silver;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px orange;
+    text-align:center;
+    
+}
+
+.splist{
+    display:flex;
+    justify-content:space-around;
+}
+
+@keyframes outline-checked {
+    0% {
+        outline-offset: 0;
+    }
+
+    100% {
+        outline-offset: -0.2rem;
+    }
+}
+
+@media screen and (max-width:750px){
+    .question{
+        width:85%;
+        overflow-x:scroll;
+    }
+    
+   .splist{
+    flex-wrap:wrap;
+}
+
+    
+}
+
+@media print {
+  header, footer {
+    display: none;
+  }
+}
